@@ -1,0 +1,16 @@
+<form [formGroup]="inscriptionForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="inscriptionForm.get('email')?.errors?.['required'] && inscriptionForm.get('email')?.touched">Email requis</div>
+      <div *ngIf="inscriptionForm.get('email')?.errors?.['email'] && inscriptionForm.get('email')?.touched">Email invalide</div>
+    </div>
+    <div>
+      <label for="password">Mot de passe:</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="inscriptionForm.get('password')?.errors?.['required'] && inscriptionForm.get('password')?.touched">Mot de passe requis</div>
+      <div *ngIf="inscriptionForm.get('password')?.errors?.['minlength'] && inscriptionForm.get('password')?.touched">Mot de passe doit avoir au moins 6 caractères</div>
+    </div>
+    <button type="submit" [disabled]="!inscriptionForm.valid">S'inscrire</button>
+  </form>
+  
